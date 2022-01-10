@@ -88,8 +88,58 @@ const indexOf = (arr, num) => console.log(arr.indexOf(num));
 indexOf([1, 6, 3, 5, 8, 9], 3);
 
 // Q3 Given an array and two numbers, your function should replace all entries of first number in an array with the second number.
-Example:
-Input: replace([1,5,3,5,6,8], 5, 10) ––> Output: [1,10,3,10,6,8]
+// Example:
+// Input: replace([1,5,3,5,6,8], 5, 10) ––> Output: [1,10,3,10,6,8]
 
-const replaceItem = (arr, a, b) => console.log(arr.replace(a, b));
+const replaceItem = (arr, a, b) => console.log(arr.map(value => value === a? b : value));
 replaceItem([1,5,3,5,6,8],5,10);
+
+// Q6. Given two arrays, your function should return single merged array.
+// Example:
+// Input: mergeArray([1,3,5], [2,4,6]) ––> Output: [1,3,5,2,4,6]
+
+const mergeArray = (arr1, arr2) => [...arr1, ...arr2];
+console.log(mergeArray([1,3,5], [2,4,6]));
+
+// Q5 Given a string and an index, your function should return the character present at that index in the string.
+// Example:
+// Input: charAt("neoGcamp", 4) ––> Output: c
+
+const charAt = (str, index) => str[index];
+console.log(charAt("neoGcamp", 4));
+
+// Q6 Given two dates, your function should return which one comes before the other.
+// Example:
+// Input: minDate('02/05/2021', '24/01/2021') ––> Output: 24/01/2021
+
+const minDate = (str1, str2) => {
+    const date1 = Number(str1.split('/').reverse().join(''));
+    const date2 = Number(str2.split('/').reverse().join(''));
+    // console.log("date1",date1);
+    // console.log("date2",date2);
+    return date1> date2? str2 : str1;
+    
+}
+console.log(minDate('02/05/2021', '24/01/2021'));
+
+const minDate = (str1, str2) => Number(str1.split('/').reverse().join('')) < Number(str2.split('/').reverse().join('')) ? str1 : str2;
+console.log(minDate('02/05/2021', '24/01/2021'));
+
+// Advance
+
+// Q1 Write a function which generates a secret code from a given string, by shifting characters of alphabet by N places. Example:
+// Input: encodeString("neogcamp", 2) ––> Output: pgqiecor
+// Explanation: 2 represents shifting alphabets by 2 places. a –> c, b –> d, c –> e and so on.
+
+const encodeString = (str, num) => 
+{
+    let encodedStr = "";
+    for(value of str) {
+        let addNum = value.charCodeAt() + num % 26;
+        if(addNum > 122)
+            addNum -= 26;
+        encodedStr += String.fromCharCode(addNum);
+    }
+    return encodedStr;
+}
+console.log(encodeString('neogcamp', 2));
