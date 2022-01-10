@@ -143,3 +143,34 @@ const encodeString = (str, num) =>
     return encodedStr;
 }
 console.log(encodeString('neogcamp', 2));
+
+// Q2 Given a sentence, return a sentence with first letter of all words as capital.
+// Example:
+// Input: toSentenceCase('we are neoGrammers') ––> Output: We Are NeoGrammers
+
+const toSentenceCase = (str) => {
+    let arr = str.split(' ');
+   let finalArr= arr.map(value => value[0].toUpperCase()
+    + value.substring(1) );
+    const finalSentence = finalArr.join(' ');
+    return finalSentence;
+}
+console.log(toSentenceCase('we are NeoGrammers'));
+
+// Q3 Given an array of numbers, your function should return an array in the ascending order.
+// Example:
+// Input: sortArray([100,83,32,9,45,61]) ––> Output: [9,32,45,61,83,100]
+
+const sortArray = arr => arr.sort((a, b) => a-b);
+console.log(sortArray([100, 83, 32, 9, 45, 61]));
+
+// Q4 Given a sentence, your function should reverse the order of characters in each word, keeping same sequence of words.
+// Example:
+// Input: reverseCharactersOfWord('we are neoGrammers') –––> Output: ew era sremmarGoen
+
+const reverseCharactersOfWord = str =>  {
+        let wordArr = str.split(' ');
+        let array = wordArr.map(value => value.split('').reverse().join(''));
+        return array.join(' ');
+    }
+console.log(reverseCharactersOfWord('we are neoGrammers'));
